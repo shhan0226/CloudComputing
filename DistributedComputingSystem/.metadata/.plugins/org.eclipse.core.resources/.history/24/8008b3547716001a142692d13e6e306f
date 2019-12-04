@@ -1,0 +1,44 @@
+package ui;
+
+import javax.swing.JComponent;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import management.WorkerResManager;
+
+public class MainStatusView extends JComponent {
+	private static MainStatusView mainStatusView = new MainStatusView();
+	private WorkerResManager workerResManager;
+
+	public MainStatusView() {
+		System.out.println("[MainStatusView.java] MainStatusView()");
+		workerResManager = WorkerResManager.getInstance();
+		this.setLocation(210, 280);
+		this.setSize(200, 200);
+		this.setVisible(true);		
+	}
+	
+	public static MainStatusView getInstance(){
+		return mainStatusView;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		paintBackground(g);
+	}
+	
+	private void paintBackground(Graphics g) {
+		
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 200, 130);
+
+		g.setColor(Color.gray);
+		g.drawRect(0, 0, 199, 129);
+		
+		this.repaint();
+	}
+
+	
+	
+}

@@ -1,0 +1,52 @@
+package ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import def.viewData;
+import management.WorkerResManager;
+
+public class WorkerView extends JPanel implements ActionListener {
+	private static WorkerView workerView = new WorkerView();
+	private MainStatusView mainStatusView;
+	private WorkerResManager workerResManager;
+	
+	private JButton connect_btn, cancel_btn;
+	private JLabel ip_lb, port_lb;
+	private JTextField iP_tf, port_tf;
+
+	public WorkerView() {
+		System.out.println("[WorkerView.java] WorkerView()");
+		this.setLayout(null);
+		this.setLocation(10, 10);
+		this.setSize(viewData.SUB_WIDTH, viewData.SUB_HEIGHT);
+		
+		initializeComponent();		
+	}
+	
+	public void initializeComponent() {
+		
+		ip_lb = new JLabel("Server IP : ");
+		ip_lb.setBounds(90, 50, 110, 25);
+		this.add(ip_lb);
+	
+	}
+	
+	public static WorkerView getInstance() {
+		return workerView;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	
+		
+	}
+	
+	
+}

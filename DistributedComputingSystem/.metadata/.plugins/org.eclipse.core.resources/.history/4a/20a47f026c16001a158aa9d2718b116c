@@ -1,0 +1,88 @@
+package ui;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFormattedTextField;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.util.ArrayList;
+
+public class MainMenuBar extends JMenuBar implements ActionListener {
+		
+	private static MainMenuBar MenuBar = new MainMenuBar();
+	
+	private JMenu BarFile;
+	private JMenu BarHelp;
+	
+	private JMenuItem jmiClose;
+	private JMenuItem jmiAboutIRIS;	
+	
+	private JCheckBoxMenuItem v_mode_Cm;
+	private JCheckBoxMenuItem sub_v_mode_Cm;
+	
+	public MainMenuBar(){
+		initialize();
+	}
+	
+	private void initialize(){
+		//file menu
+		
+		BarFile = new JMenu("Set(s)");
+		BarFile.setMnemonic('S');
+				
+		
+/*		jmFile = new JMenu("Set(S)");
+		jmFile.setMnemonic('S');
+		
+		jmiClose = new JMenuItem("Close(C)");
+		jmiClose.setMnemonic('C');
+		jmiClose.addActionListener(this);
+		
+		jmFile.add(jmiClose);
+				
+		//help menu
+		
+		jmHelp = new JMenu("About(H)");
+		jmHelp.setMnemonic('H');
+		
+		jmiAboutIRIS = new JMenuItem("About IRIS(A)");
+		jmiAboutIRIS.setMnemonic('A');
+		jmiAboutIRIS.addActionListener(this);
+		
+		jmHelp.add(jmiAboutIRIS);*/
+		
+		this.add(BarFile);
+		// this.add(jmHelp);
+		
+		this.setSize(viewData.MENUBAR_WIDHT, viewData.MENUBAR_HEIGHT);
+		this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource().equals(jmiClose)){			
+			System.exit(0);
+		}
+		else if(e.getSource().equals(jmiAboutIRIS)){
+			System.out.println("DCS Server");
+			JOptionPane.showMessageDialog(this, "version 0.1", "by Seok-Hyeon Han", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
+	}
+	
+	public static MainMenuBar getInstance(){
+		return MenuBar;
+	}
+	
+	
+
+}

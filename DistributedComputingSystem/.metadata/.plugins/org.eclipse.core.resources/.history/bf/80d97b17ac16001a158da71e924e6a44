@@ -1,0 +1,12 @@
+package management;
+
+import java.net.Socket;
+
+public class ConnectToServer {
+	Socket socket;
+	String IP = "";
+	int PORT = 32000;	
+	Heartbeat hb;
+
+
+}

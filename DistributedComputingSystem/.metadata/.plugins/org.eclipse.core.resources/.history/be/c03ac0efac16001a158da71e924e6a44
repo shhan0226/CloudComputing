@@ -1,0 +1,22 @@
+package management;
+
+import java.net.Socket;
+
+public class ConnectToServer {
+	Socket socket;
+	String IP = "";
+	int PORT = 32000;	
+	Heartbeat hb;
+	
+	public ConnectToServer(String IP){
+		System.out.println("[ConnectToServer.java] Server connection ! (IP:" + IP + ")" );
+		this.IP = IP;
+		Init();		
+	}
+	
+	public void Init() {
+		
+	}
+
+
+}

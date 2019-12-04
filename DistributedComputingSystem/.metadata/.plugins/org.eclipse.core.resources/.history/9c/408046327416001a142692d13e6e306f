@@ -1,0 +1,14 @@
+package ui;
+
+import javax.swing.JComponent;
+
+public class MainStatusView extends JComponent {
+	private static MainStatusView mainStatusView = new MainStatusView();
+	
+	public MainStatusView() {
+		System.out.println("[MainStatusView.java] MainStatusView()");
+		
+		
+	}
+
+}

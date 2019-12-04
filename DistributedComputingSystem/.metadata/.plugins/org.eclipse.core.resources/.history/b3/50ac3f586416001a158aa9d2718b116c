@@ -1,0 +1,20 @@
+package main;
+
+import java.io.IOException;
+import javax.swing.UIManager;
+import management.*;
+import ui.*;
+
+public class main {
+
+	public static void main(String args[]) throws IOException {
+		try {
+			UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			// 윈도우로 이거 쓸 것인지 본인 선택
+		} catch (Exception e) {
+		}
+		new MainView();
+	}
+
+}

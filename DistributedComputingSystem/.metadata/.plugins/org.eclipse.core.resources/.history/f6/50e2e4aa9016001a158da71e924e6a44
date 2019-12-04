@@ -1,0 +1,69 @@
+package ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import def.Worker;
+import def.viewData;
+
+public class ServerView extends JPanel implements ActionListener {
+	private static ServerView serverView = new ServerView();
+
+	private JButton server_btn, cancel_btn, refreash_btn;
+	private JLabel serverIp_lb, serverPort_lb;
+	private JTextField serverIP_tf, serverPort_tf;
+
+	public ServerView() {
+		System.out.println("[ServerView.java] ServerView()");
+		this.setLayout(null);
+		this.setLocation(0, 0);
+		this.setSize(viewData.SUB_WIDTH, viewData.SUB_HEIGHT);
+
+		initializeComponent();
+
+	}
+
+	public void initializeComponent() {
+		System.out.println("[ServerView.java] initializeComponent()");
+		
+		serverIp_lb = new JLabel("Server IP : ");
+		serverIp_lb.setBounds(5, 30, 110, 25);
+		serverIp_lb.setVisible(true);
+		this.add(serverIp_lb);
+		
+		serverPort_lb = new JLabel("Server Port : ");
+		serverPort_lb.setBounds(175, 30, 110, 25);
+		this.add(serverPort_lb);
+		
+		server_btn = new JButton("Server On");
+		server_btn.setBounds(380, 50, 90, 25);
+		server_btn.addActionListener(this);
+		server_btn.setFocusable(false);
+		this.add(server_btn);
+
+		cancel_btn = new JButton("Server Off");
+		cancel_btn.setBounds(450, 30, 90, 25);
+		cancel_btn.addActionListener(this);
+		cancel_btn.setFocusable(false);
+		cancel_btn.setEnabled(false);
+		this.add(cancel_btn);
+
+	}
+
+	public static ServerView getInstance() {
+		return serverView;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

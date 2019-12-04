@@ -1,0 +1,20 @@
+package ui;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class ServerView extends JPanel implements ActionListener {
+
+	private static ServerView serverView = new ServerView();
+	
+	public ServerView() {
+		System.out.println("[ServerView.java] ServerView()");
+	}
+	
+
+	public static ServerView getInstance() {
+		return serverView;
+	}
+	
+}

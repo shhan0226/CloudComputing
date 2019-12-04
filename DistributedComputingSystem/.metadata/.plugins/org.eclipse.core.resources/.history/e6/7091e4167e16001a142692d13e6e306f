@@ -1,0 +1,130 @@
+package ui;
+
+import javax.swing.JComponent;
+
+import def.Worker;
+import management.UsageCheck;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.net.InetAddress;
+
+public class MainStatusView extends JComponent {
+	private static MainStatusView mainStatusView = new MainStatusView();
+	private Worker worker;
+	private UsageCheck update;
+
+	public MainStatusView() {
+		System.out.println("[MainStatusView.java] MainStatusView()");
+		worker = new Worker();
+		update = new UsageCheck();
+		WorkerInit();
+
+		this.setLocation(210, 280);
+		this.setSize(200, 200);
+		this.setVisible(true);
+	}
+
+	public void update_start() {
+		update.startUpdate();
+	}
+
+	public void update_stop() {
+		update.stopUpdate();
+	}
+
+	public static MainStatusView getInstance() {
+		return mainStatusView;
+	}
+
+	public void WorkerInit() {
+
+		try {
+			worker.setMyComputer(InetAddress.getLocalHost());
+			worker.setHOST_NAME(worker.getMyComputer().getHostName());
+			worker.setIP(worker.getMyComputer().getHostAddress());
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("[MainStatusView.java] WorkerInit()");
+			e.printStackTrace();
+		}
+
+		OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
+		float FreeMem = 0, TotalMem = 0;
+		String Memory = "";
+
+		for (Method method : operatingSystemMXBean.getClass().getDeclaredMethods()) {
+			method.setAccessible(true);
+			if (method.getName().startsWith("getFreePhysicalMemorySize") && Modifier.isPublic(method.getModifiers())) {
+				Object value;
+				try {
+					value = method.invoke(operatingSystemMXBean);
+				} catch (Exception e) {
+					value = e;
+				}
+				FreeMem = ((float) ((long) value / 1024) / 1024) / 1024;
+
+			} else if (method.getName().startsWith("getTotalPhysicalMemorySize")
+					&& Modifier.isPublic(method.getModifiers())) {
+				Object value;
+				try {
+					value = method.invoke(operatingSystemMXBean);
+				} catch (Exception e) {
+					value = e;
+				}
+				TotalMem = ((float) ((long) value / 1024) / 1024) / 1024;
+
+			}
+			Memory = String.format("%.2f", TotalMem);
+			worker.setMEMORY_CAPA(Memory);
+			Memory = String.format("%.2f", TotalMem - FreeMem);
+			worker.setMEMORY_USAGE(Memory);
+
+			if (method.getName().startsWith("getSystemCpuLoad") && Modifier.isPublic(method.getModifiers())) {
+				Object value;
+				try {
+					value = method.invoke(operatingSystemMXBean);
+				} catch (Exception e) {
+					value = e;
+				}
+				String CPU = String.format("%.2f", (double) value * 100);
+				// System.out.println(method.getName() + " = " + CPU + "%");
+				worker.setCPU_USAGE(CPU);
+			}
+		}
+
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		paintBackground(g);
+	}
+
+	private void paintBackground(Graphics g) {
+
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 200, 130);
+		// 하얀색 네모칸
+
+		g.setColor(Color.gray);
+		g.drawRect(0, 0, 199, 129);
+		// 회색 네모 테두리
+
+		g.setColor(Color.BLACK);
+		g.drawString("PC Name : ", 20, 20);
+		g.drawString("Local IP : ", 20, 40);
+		g.drawString("CPU USAGE : " + "%", 20, 60);
+		g.drawString("CPU CAPA : " + "ms", 20, 80);
+		g.drawString("Memory USAGE : " + "GB", 20, 100);
+		g.drawString("Memory CAPA : " + "GB", 20, 120);
+
+		this.repaint();
+	}
+
+}

@@ -1,0 +1,10 @@
+package management;
+
+public class ServerResManager {
+	private static ServerResManager serverResManager = new ServerResManager();
+	
+	public ServerResManager(){
+		System.out.println("[ServerResManager.java] ServerResManager()");
+	}
+
+}

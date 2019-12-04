@@ -1,0 +1,23 @@
+package def;
+
+public interface viewData {
+
+	final static int FRAME_WIDTH = 600;
+	final static int FRAME_HEIGHT = 600;
+
+	final static int MENUBAR_WIDHT = 610;
+	final static int MENUBAR_HEIGHT = 25;
+
+	final static int COMPONET_GAP = 20;
+
+	final static int STATUS_WIDHT = 560;
+	final static int STATUS_HEIGHT = 360;
+
+	final static int DEFAULT_FRACTAL_ANGLE = -90;
+
+	final static int BASE_LOG_VALUE = 2;
+
+	final static int CPU_WEIGHT = 8;
+	final static int MEMORY_WEIGHT = 2;
+
+}

@@ -1,0 +1,18 @@
+package management;
+
+import def.Worker;
+
+public class WorkerResManager {
+	private static WorkerResManager workerResManager = new WorkerResManager();
+	
+	
+	public WorkerResManager(){
+		System.out.println("[WorkerResManager.java] WorkerResManager()");
+		
+	}
+	
+	public static WorkerResManager getInstance() {
+		return workerResManager;
+	}
+
+}

@@ -1,0 +1,39 @@
+package ui;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MainView extends JFrame {
+	// component
+	private JPanel jp = null;
+
+	public MainView() {
+		System.out.println("MainView()");
+		
+		this.setContentPane(getContentJPane());
+		this.setBounds(0, 0, viewData.FRAME_WIDTH, viewData.FRAME_HEIGHT);
+		this.setTitle("DCS Server");
+		
+		
+		
+		
+		
+		
+		 
+
+	}
+
+	public JPanel getContentJPane() {
+
+		if (jp == null) {
+			jp = new JPanel();
+			jp.setLayout(null);
+			jp.setSize(viewData.FRAME_WIDTH, viewData.FRAME_HEIGHT);
+		}
+		return jp;
+
+	}
+
+}

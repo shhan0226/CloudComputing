@@ -1,0 +1,91 @@
+package ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import def.Worker;
+import def.viewData;
+
+public class ServerView extends JPanel implements ActionListener {
+	private static ServerView serverView = new ServerView();
+
+	private JButton server_btn, cancel_btn, refreash_btn;
+	private JLabel serverIp_lb, serverPort_lb;
+	private JTextField serverIP_tf, serverPort_tf;
+	private DefaultTableModel model;
+	private JTable WorkerTable;
+	private JScrollPane Tscroll;
+	private String[] header = new String[] { "Name", "IP", "CPU_U(%)", "CPU_C(ms)", "Mem_U(GB)", "Mem_C(GB)" };
+	
+	public ServerView() {
+		System.out.println("[ServerView.java] ServerView()");
+		this.setLayout(null);
+		this.setLocation(10, 50);
+		this.setSize(viewData.SUB_WIDTH, viewData.SUB_HEIGHT);
+
+		initializeComponent();
+
+	}
+
+	public void initializeComponent() {
+		System.out.println("[ServerView.java] initializeComponent()");
+		
+		serverIp_lb = new JLabel("Server IP : ");
+		serverIp_lb.setBounds(5, 5, 110, 25);
+		serverIp_lb.setVisible(true);
+		this.add(serverIp_lb);
+		
+		serverPort_lb = new JLabel("Server Port : ");
+		serverPort_lb.setBounds(175, 5, 110, 25);
+		this.add(serverPort_lb);
+		
+		serverPort_tf = new JTextField("32000");
+		serverPort_tf.setBounds(245, 5, 70, 25);
+		serverPort_tf.setFocusable(true);
+		this.add(serverPort_tf);
+		
+		server_btn = new JButton("Server On");
+		server_btn.setBounds(380, 5, 90, 25);
+		server_btn.addActionListener(this);
+		server_btn.setFocusable(false);
+		this.add(server_btn);
+
+		cancel_btn = new JButton("Server Off");
+		cancel_btn.setBounds(470, 5, 90, 25);
+		cancel_btn.addActionListener(this);
+		cancel_btn.setFocusable(false);
+		cancel_btn.setEnabled(false);
+		this.add(cancel_btn);
+
+		refreash_btn = new JButton("Refreash");
+		refreash_btn.setBounds(470, 300, 90, 25);
+		refreash_btn.addActionListener(this);
+		this.add(refreash_btn);
+		
+		model = new DefaultTableModel(header, 0);
+		WorkerTable = new JTable(model);
+		Tscroll = new JScrollPane(WorkerTable);
+		Tscroll.setBounds(5, 30, 485, 230);
+		this.add(Tscroll);
+	}
+
+	public static ServerView getInstance() {
+		return serverView;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

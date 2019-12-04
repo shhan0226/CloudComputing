@@ -1,0 +1,34 @@
+package ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+
+import def.viewData;
+import management.WorkerResManager;
+
+public class WorkerView extends JPanel implements ActionListener {
+	private static WorkerView workerView = new WorkerView();
+	private MainStatusView mainStatusView;
+	private WorkerResManager workerResManager;
+
+	public WorkerView() {
+		System.out.println("[WorkerView.java] WorkerView()");
+		this.setLayout(null);
+		this.setLocation(10, 10);
+		this.setSize(viewData.SUB_WIDTH, viewData.SUB_HEIGHT);
+		
+	}
+	
+	public static WorkerView getInstance() {
+		return workerView;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

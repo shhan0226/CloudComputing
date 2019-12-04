@@ -1,0 +1,39 @@
+package management;
+
+import java.net.InetAddress;
+
+public class ServerResManager {
+	private static ServerResManager serverResManager = new ServerResManager();
+	private InetAddress serverIP;
+	
+	
+	public ServerResManager(){
+		System.out.println("[ServerResManager.java] ServerResManager()");
+		
+		try {
+			serverIP = InetAddress.getLocalHost();			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("[ServerResManager.java] Err");
+		}
+	}
+	
+	public InetAddress getServerIP() {
+		return serverIP;
+	}
+	
+	public void setServerIP(InetAddress serverIP) {
+		this.serverIP = serverIP;
+	}
+
+	public static ServerResManager getInstance() {
+		return serverResManager;
+	}
+	
+	public void serverStart(String port){
+		
+	}
+	
+	
+}

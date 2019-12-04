@@ -1,0 +1,79 @@
+package ui;
+
+import java.awt.Color;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFormattedTextField;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import def.viewData;
+
+public class MainMenuBar extends JMenuBar implements ActionListener {
+
+	private static MainMenuBar MenuBar = new MainMenuBar();
+
+	private JMenu BarFile;
+	private JMenu BarHelp;
+
+	private JMenuItem BarItemClose;
+	private JMenuItem BarItemVersion;
+
+	private JCheckBoxMenuItem temp;
+
+	public MainMenuBar() {
+		System.out.println("[MainMenuBar.java] MainMenuBar()");
+		initialize();
+	}
+
+	private void initialize() {
+		System.out.println("[MainMenuBar.java] initialize()");
+		// File Menu
+		BarFile = new JMenu("Set(s)");
+		BarFile.setMnemonic('S');
+
+		BarItemClose = new JMenuItem("Close(c)");
+		BarItemClose.setMnemonic('C');
+		BarItemClose.addActionListener(this);
+		BarFile.add(BarItemClose);
+
+		// Help Menu
+		BarHelp = new JMenu("About (h)");
+		BarHelp.setMnemonic('H');
+
+		BarItemVersion = new JMenuItem("About DCS (a)");
+		BarItemVersion.setMnemonic('A');
+		BarItemVersion.addActionListener(this);
+		BarHelp.add(BarItemVersion);
+
+		this.add(BarFile);
+		this.add(BarHelp);
+
+		this.setSize(viewData.MENUBAR_WIDHT, viewData.MENUBAR_HEIGHT);
+		this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource().equals(BarItemClose)) {
+			System.exit(0);
+		} else if (e.getSource().equals(BarItemVersion)) {
+			System.out.println("DCS Server");
+			JOptionPane.showMessageDialog(this, "Distributed Computing System\nVersion 0.1", "by Seok-Hyeon Han",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+
+	}
+
+	public static MainMenuBar getInstance() {
+		return MenuBar;
+	}
+
+}

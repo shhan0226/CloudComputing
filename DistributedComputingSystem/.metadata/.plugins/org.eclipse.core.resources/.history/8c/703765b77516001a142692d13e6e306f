@@ -1,0 +1,21 @@
+package ui;
+
+import javax.swing.JComponent;
+
+import management.WorkerResManager;
+
+public class ServerStatusView extends JComponent {
+	private static MainStatusView serverStatusView = new MainStatusView();
+	private WorkerResManager workerResManager;
+	
+	public ServerStatusView() {
+		System.out.println("[ServerStatusView.java] ServerStatusView()");
+		workerResManager = WorkerResManager.getInstance();
+		this.setLocation(150, 160);
+		this.setSize(200, 200);
+		this.setVisible(true);
+		
+				
+	}
+
+}

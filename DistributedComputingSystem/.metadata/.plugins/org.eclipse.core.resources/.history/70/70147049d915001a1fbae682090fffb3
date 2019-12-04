@@ -1,0 +1,59 @@
+package ui;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class MainView extends JFrame{
+	//component
+	private JPanel jp = null;
+
+	//class
+	/*
+	private MainMenuBar s_menubar;
+	private StatusView statusView;
+	private ControlView controlView;
+	*/
+	
+	public MainView(){
+		this.setContentPane(getContentJPane());
+		this.setBounds(0, 0, viewData.FRAME_WIDTH + 16, viewData.FRAME_HEIGHT);
+		this.setTitle("DCS Server");
+		
+		setClass();
+						
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension frameSize = this.getSize();
+		this.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);		
+	}
+	
+	public void setClass(){
+		/*this.s_menubar = MainMenuBar.getInstance();
+		this.statusView = StatusView.getInstance();
+		this.controlView = ControlView.getInstance();
+				
+		this.add(s_menubar);
+		this.add(statusView);
+		this.add(controlView);*/
+	}	
+	
+	public JPanel getContentJPane(){
+		/*
+		if(jp == null)
+		{
+			jp = new JPanel();
+			jp.setLayout(null);
+			jp.setSize(CONSTANTS.FRAME_WIDTH, CONSTANTS.FRAME_HEIGHT);
+		}
+		return jp;
+		*/
+	}
+	
+
+}

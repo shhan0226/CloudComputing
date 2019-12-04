@@ -1,0 +1,59 @@
+package ui;
+
+import javax.swing.JComponent;
+
+import def.Worker;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import management.UsageCheck;
+
+public class MainStatusView extends JComponent {
+	private static MainStatusView mainStatusView = new MainStatusView();
+	private Worker worker;
+	private UsageCheck update;
+
+	public MainStatusView() {
+		System.out.println("[MainStatusView.java] MainStatusView()");
+		worker = new Worker();
+		update = new UsageCheck();
+		
+		
+		this.setLocation(210, 280);
+		this.setSize(200, 200);
+		this.setVisible(true);
+	}
+
+	public static MainStatusView getInstance() {
+		return mainStatusView;
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		paintBackground(g);
+	}
+
+	private void paintBackground(Graphics g) {
+
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 200, 130);
+		// 하얀색 네모칸
+
+		g.setColor(Color.gray);
+		g.drawRect(0, 0, 199, 129);
+		// 회색 네모 테두리
+
+		g.setColor(Color.BLACK);
+		g.drawString("PC Name : ", 20, 20);
+		g.drawString("Local IP : ", 20, 40);
+		g.drawString("CPU USAGE : " + "%", 20, 60);
+		g.drawString("CPU CAPA : " + "ms", 20, 80);
+		g.drawString("Memory USAGE : " + "GB", 20, 100);
+		g.drawString("Memory CAPA : " + "GB", 20, 120);
+
+		this.repaint();
+	}
+
+}
