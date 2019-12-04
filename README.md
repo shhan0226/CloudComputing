@@ -1,7 +1,7 @@
-# CloudComputing-Dev
+# DistributedComputingSystem
 
 ## Introduction
-Cloud Computing을 위한 다양한 기능 구현
+Distributed Computing System을 위한 다양한 기능 구현
 <br>
 
 ## Contents
